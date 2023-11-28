@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>日本の森林面積</title>
+    <meta property="og:description" content="日本の森林面積に関する統計を可視化した地図" />
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' />
+    <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    const map = new maplibregl.Map({
+        container: 'map',
+        style:
+            'https://api.maptiler.com/maps/jp-mierune-gray/style.json?key=xeycR1Jqna3Gkrzt6ZBw',
+        center: [139.48, 35.30],
+        zoom: 5,
+        attribution: '<a href="https://maptiler.jp/" target="_blank">&copy; MIERUNE</a> <a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+    });
+
+    map.on('load', () => {
+        map.addSource('area_f_pref', {
+            'type': 'geojson',
+            'data': './area_f_area_v1.geojson',
+            'attribution': '<a href="https://www.rinya.maff.go.jp/j/keikaku/genkyou/r4/index.html" target="_blank">森林資源の現況(林野庁)</a>'
+        });
+        map.addLayer({
+            'id': 'maine',
+            'type': 'fill',
+            'source': 'marea_f_pref',
+            'layout': {},
+            'paint': {
+                'fill-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'ratio_f'],
+                    0, '#000',
+                    100, '#0f0'
+                ],
+                'fill-opacity': 0.8
+            }
+        });
+    });
+</script>
+</body>
+</html>
