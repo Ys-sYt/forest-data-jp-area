@@ -19,10 +19,10 @@
     //const jsonurl = '${path}/area_f_pref_v1.geojson';
     const map = new maplibregl.Map({
         container: 'map',
+        center: [139.48, 35.30],
+        zoom: 5,
         style:{
             version: 8,
-            center: [139.48, 35.30],
-            zoom: 5,
             sources: {
                 base: {
                     type: 'raster',
@@ -30,12 +30,12 @@
                         'https://api.maptiler.com/maps/jp-mierune-gray/{z}/{x}/{y}.png?key=xeycR1Jqna3Gkrzt6ZBw',
                     ],
                     tileSize: 512,
-                },
-                area: {
+                 },
+/*                area: {
                     type: 'geojson',
                     data: './area_f_pref_v1.geojson',
                     attribution: '<a href="https://maptiler.jp/" target="_blank">&copy; MIERUNE</a> <a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-                },
+                }, */
             },
         },
         layers: [
@@ -44,7 +44,7 @@
                 source: 'base',
                 type: 'raster',
             },
-            {
+/*             {
                 id: 'area',
                 source: 'area',
                 type: 'fill',
@@ -57,11 +57,11 @@
                         100, '#0f0f',
                     ],
                 },
-            },
+            }, */
         ],
     });
 
-    map.on('load', () => {
+/*     map.on('load', () => {
         map.addSource('area_f_pref', {
             'type': 'geojson',
             'data': './area_f_area_v1.geojson',
@@ -83,7 +83,7 @@
                 'fill-opacity': 0.8
             }
         });
-    });
+    }); */
 </script>
 </body>
 </html>
