@@ -49,9 +49,18 @@
                             source: 'polygon',
                             type: 'fill',
                             paint: {
-                                // Leafletの場合と同じような色表現とするための設定
-                                'fill-color': '#888',
-                            }
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_f'], // 'ratio_f'プロパティの値を取得
+                                    0, '#000',
+                                    25, '#ff0000',
+                                    50, '#00ff00',
+                                    75, '#0000ff',
+                                    100, '#ffffff',
+                                ],
+                                'fill-opacity': 0.7, // 塗りつぶしの不透明度を設定（必要に応じて）
+                            },
                         },
                         
                     ],
