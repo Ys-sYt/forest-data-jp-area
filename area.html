@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>6-2.MapLibre GL JSで地図上に多くの図形を表示する</title>
+        <title>森林率マップ</title>
         <!-- MapLibre GL JSを読み込み -->
         <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
         <link
@@ -25,9 +25,9 @@
                         osm: {
                             type: 'raster', // ラスタータイル
                             tiles: [
-                                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                'https://api.maptiler.com/maps/jp-mierune-gray/{z}/{x}/{y}.png?key=xeycR1Jqna3Gkrzt6ZBw',
                             ],
-                            tileSize: 256, // タイルの解像度, デフォルトは512
+                            tileSize: 512, // タイルの解像度, デフォルトは512
                             maxzoom: 18,
                             attribution:
                                 '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -54,7 +54,7 @@
                                     ['linear'],
                                     ['get', 'ratio_f'], // 'ratio_f'プロパティの値を取得
                                     0, '#000',
-                                    100, '#ffffff',
+                                    100, '＃006400',
                                 ],
                                 'fill-opacity': 0.7, // 塗りつぶしの不透明度を設定（必要に応じて）
                             },
