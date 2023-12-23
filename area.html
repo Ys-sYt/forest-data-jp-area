@@ -24,7 +24,7 @@
                     glyphs: "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
                     sources: {
                         // 地図上で使うデータを定義する
-                        osm: {
+                        /* osm: {
                             type: 'raster', // ラスタータイル
                             tiles: [
                                 'https://api.maptiler.com/maps/jp-mierune-gray/{z}/{x}/{y}.png?key=xeycR1Jqna3Gkrzt6ZBw',
@@ -33,10 +33,12 @@
                             maxzoom: 18,
                             attribution:
                                 '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                        },
+                        }, */
                         forest_area: {
                             type: 'geojson', // GeoJSON
                             data: './area_f_pref_v1.geojson',
+                            attribution:
+                                '&copy; <a href="https://www.rinya.maff.go.jp/j/keikaku/genkyou/r4/3.html">林野庁森林資源現況総括表(令和4年3月31日現在)</a> contributors',
                         },
 
                     },
@@ -61,6 +63,7 @@
                                 'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
                             },
                         },
+                        
                         {
                             id: 'outline',
                             source: 'forest_area',
@@ -82,9 +85,9 @@
                                     ['linear'],
                                     ['zoom'],
                                     10,
-                                    8,
+                                    10,
                                     14,
-                                    14,
+                                    18,
                                 ],
                             },
                             paint: {
