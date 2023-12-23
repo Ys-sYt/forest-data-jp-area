@@ -48,21 +48,6 @@
                             source: 'osm', // 使うデータをsourcesのkeyで指定する
                             type: 'raster', // データをどのように表示するか指定する
                         }, */
-                        {
-                            id: 'polygon-layer',
-                            source: 'forest_area',
-                            type: 'fill',
-                            paint: {
-                                'fill-color': [
-                                    'interpolate',
-                                    ['linear'],
-                                    ['get', 'ratio_f'], // 'ratio_f'プロパティの値を取得
-                                    20, '#fff',
-                                    90, '#006400',
-                                ],
-                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
-                            },
-                        },
                         
                         {
                             id: 'outline',
@@ -85,7 +70,7 @@
                                     ['linear'],
                                     ['zoom'],
                                     10,
-                                    10,
+                                    8,
                                     14,
                                     18,
                                 ],
@@ -95,7 +80,111 @@
                                 'text-halo-color': '#fff',
                             },
                         },
-                        
+                        {
+                            id: 'ratio_f',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_f'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_n',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_n'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_p',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_p'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_pb',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_pb'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_pref',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_pref'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_city',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_city'], // 'ratio_f'プロパティの値を取得
+                                    20, '#fff',
+                                    90, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
+                        {
+                            id: 'ratio_zai',
+                            source: 'forest_area',
+                            type: 'fill',
+                            paint: {
+                                'fill-color': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'ratio_zai'], // 'ratio_f'プロパティの値を取得
+                                    0, '#fff',
+                                    5, '#006400',
+                                ],
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
+                            },
+                        },
                     ],
                 },
             });
