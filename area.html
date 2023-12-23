@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>森林率マップ</title>
+        
         <!-- MapLibre GL JSを読み込み -->
         <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
         <link
-            href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css"
-            rel="stylesheet"
+            href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"
         />
+        <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
     </head>
     <body>
         <div id="map" style="height: 80vh"></div>
@@ -20,6 +21,7 @@
                 style: {
                     // MapLibre-Style
                     version: 8,
+                    glyphs: "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
                     sources: {
                         // 地図上で使うデータを定義する
                         osm: {
@@ -32,7 +34,7 @@
                             attribution:
                                 '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                         },
-                        polygon: {
+                        forest_area: {
                             type: 'geojson', // GeoJSON
                             data: './area_f_pref_v1.geojson',
                         },
@@ -46,7 +48,7 @@
                         },
                         {
                             id: 'polygon-layer',
-                            source: 'polygon',
+                            source: 'forest_area',
                             type: 'fill',
                             paint: {
                                 'fill-color': [
@@ -56,15 +58,38 @@
                                     20, '#fff',
                                     90, '#006400',
                                 ],
-                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定（必要に応じて）
+                                'fill-opacity': 0.6, // 塗りつぶしの不透明度を設定
                             },
                         },
                         {
                             id: 'outline',
-                            source: 'polygon',
+                            source: 'forest_area',
                             type: 'line',
                             paint: {
                                 'line-color': '#000',
+                            },
+                        },
+                        {
+                            id: 'pref-label-layer',
+                            source: 'forest_area',
+                            type: 'symbol',
+                            layout: {
+                                'text-field': ['get', 'name'],
+                                'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                                'text-anchor': 'top',
+                                'text-size': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['zoom'],
+                                    10,
+                                    8,
+                                    14,
+                                    14,
+                                ],
+                            },
+                            paint: {
+                                'text-halo-width': 1,
+                                'text-halo-color': '#fff',
                             },
                         },
                         
